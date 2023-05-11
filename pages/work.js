@@ -1,8 +1,15 @@
-export default function work () {
+import Head from 'next/head'
+import { motion as m } from "framer-motion"
+
+export default function work() {
 
     return (
         <>
-            <h1>Test</h1>
+        Test
+
         </>
     )
+
+
+
 }
