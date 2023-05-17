@@ -4,7 +4,7 @@ import { AnimatePresence } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import useRouteUrlHistory from './usePreviousPage';
+import useRouteUrlHistory from './useTargetPage';
 
 let prevRoute
 let currentRoute

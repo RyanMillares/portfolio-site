@@ -2,22 +2,22 @@ import Head from 'next/head'
 import { motion as m } from "framer-motion"
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react'
-import useRouteUrlHistory from './usePreviousPage';
+import useRouteUrlHistory from './useTargetPage';
 
 
 
-export default function Projects({pageProps, prevRoute, currentRoute}) {
-    const previousPageName = "test"
+export default function Projects({ pageProps, prevRoute, currentRoute }) {
     useEffect(() => {
-        console.log(previousPageName)
-      })
+
+    })
     return (
         <>
             <div className="bg-gray-800 flex flex-col items-center min-h-screen py-2">
-                <m.div initial={{ x: "100%", opacity: 0 }}
+                <m.div
+                    initial={{ x: (prevRoute == "/" || prevRoute == "/work" ? "100%" : "-100%"), opacity: 0 }}
                     animate={{ x: "0%", opacity: 1 }}
-                    exit={{ x: "-100%", opacity: 0 }}
-                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    exit={{ x: (currentRoute == "/" || currentRoute == "/work" ? "-100%" : "100%"), opacity: 0 }}
+                    transition={{ duration: 0.75, ease: "easeOut" }}
                 >
                     <Head>
                         <title>Ryan Millares</title>
@@ -38,7 +38,6 @@ export default function Projects({pageProps, prevRoute, currentRoute}) {
                             </h1>
                             <br />
                             <h2 className="text-1xl">eeee</h2>
-                            <h2 className = "text-1x;">Route: {previousPageName}</h2>
 
 
 

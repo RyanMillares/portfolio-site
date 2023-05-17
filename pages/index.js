@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { motion as m } from "framer-motion";
 import { useState, useEffect } from 'react'
 import { useRouter } from "next/router";
-import useRouteUrlHistory from './usePreviousPage';
+import useRouteUrlHistory from './useTargetPage';
 export default function Home({pageProps, prevRoute, currentRoute}) {
 
 
@@ -14,7 +14,7 @@ export default function Home({pageProps, prevRoute, currentRoute}) {
   })
   
   const testBool = true
-  const previousPageName = "test"
+  const nextPageName = useRouteUrlHistory()
   useEffect(() => {
     console.log(pageProps)
   })
@@ -24,10 +24,10 @@ export default function Home({pageProps, prevRoute, currentRoute}) {
   return (
     <div className= {((testBool) ? "bg-gray-800" : "bg-gray-200") + " flex flex-col items-center min-h-screen py-2"}>
       <m.div
-        initial={{ x: "100%", opacity: 0 }}
+        initial={{ x: (prevRoute == "/work" || prevRoute == "/projects" ? "-100%" : "100%"), opacity: 0 }}
         animate={{ x: "0%", opacity: 1 }}
-        exit = {{ x: "-100%", opacity: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}>
+        exit = {{ x: (currentRoute == "/work" || currentRoute == "/projects" ? "100%" : "-100%"), opacity: 0 }}
+        transition={{ duration: 0.75, ease: "easeOut" }}>
         <Head>
           <title>Ryan Millares</title>
           <link rel="icon" href="/favicon.ico" />
@@ -51,7 +51,7 @@ export default function Home({pageProps, prevRoute, currentRoute}) {
             <h2 className="text-1xl">Majors: Computer Science and Data Analytics</h2>
             <h2 className="text-1xl">Minor: Game Development</h2>
             <h2 className="text-1xl">GPA: 3.6</h2>
-            <h2 className = "text-1x;">Route: {previousPageName}</h2>
+            <h2 className = "text-1x;">Route: {nextPageName}</h2>
 
 
 
