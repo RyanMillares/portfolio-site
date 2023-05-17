@@ -1,15 +1,14 @@
-import Head from 'next/head'
-import { motion as m } from "framer-motion"
+import { useRouter } from "next/router";
+import { useState, useEffect } from 'react'
+import useRouteUrlHistory from "./usePreviousPage";
 
-export default function work() {
+export default function Work({pageProps, prevRoute, currentRoute}) {
+
 
     return (
         <>
-        Test
-
+            <p>Work</p>
+            <p>{prevRoute}</p>
         </>
-    )
-
-
-
+    );
 }

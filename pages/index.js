@@ -1,26 +1,33 @@
 import Head from 'next/head'
+
 import { motion as m } from "framer-motion";
-import { useState } from 'react'
-export default function Home() {
+import { useState, useEffect } from 'react'
+import { useRouter } from "next/router";
+import useRouteUrlHistory from './usePreviousPage';
+export default function Home({pageProps, prevRoute, currentRoute}) {
+
 
   const [user, setUser] = useState({
     "name": "Ryan",
     "email": "rmillares@chapman.edu"
 
   })
-  const testBool = false
-
-
-
+  
+  const testBool = true
+  const previousPageName = "test"
+  useEffect(() => {
+    console.log(pageProps)
+  })
 
 
 
   return (
     <div className= {((testBool) ? "bg-gray-800" : "bg-gray-200") + " flex flex-col items-center min-h-screen py-2"}>
       <m.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.75, ease: "easeOut" }}>
+        initial={{ x: "100%", opacity: 0 }}
+        animate={{ x: "0%", opacity: 1 }}
+        exit = {{ x: "-100%", opacity: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}>
         <Head>
           <title>Ryan Millares</title>
           <link rel="icon" href="/favicon.ico" />
@@ -32,11 +39,11 @@ export default function Home() {
           <div className="spacer" />
           <div className="spacer" />
 
-          <div className="text-white">
+          <div className={(testBool ? "text-white" : "text-black")}>
             <h1>
               <span className="font-black text-5xl">Ryan Millares</span>
               <br />
-              <span className="text-3xl text-green-300">Full-Stack Developer</span>
+              <span className={(testBool ? "text-green-300" : "text-green-700")+ " text-3xl"}>Full-Stack Developer</span>
             </h1>
             <br />
             <h2 className="text-1xl">Chapman University</h2>
@@ -44,6 +51,7 @@ export default function Home() {
             <h2 className="text-1xl">Majors: Computer Science and Data Analytics</h2>
             <h2 className="text-1xl">Minor: Game Development</h2>
             <h2 className="text-1xl">GPA: 3.6</h2>
+            <h2 className = "text-1x;">Route: {previousPageName}</h2>
 
 
 
