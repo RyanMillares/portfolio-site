@@ -11,7 +11,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
     const router = useRouter();
     const { pathname } = router;
     const nextPageName = "/" + useRouteUrlHistory()
-    const options = [
+    const skillOptions = [
         { value: 'java', label: 'Java' },
         { value: 'c++', label: 'C++' },
         { value: 'python', label: 'Python' },
@@ -19,14 +19,37 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
 
         { value: 'c#', label: 'C#' }
     ]
-    const [optionSelected, setOptionSelected] = useState(null);
+    const settingOptions = [
+        { value: 'professional', label: 'Professional'},
+        { value: 'academic', label: 'Academic'},
+        { value: 'personal', label: 'Personal'}
+    ]
+    const [skillsSelected, setSkillsSelected] = useState(null);
+    const [settings, setSettings] = useState([])
     const [projectList, setProjectList] = useState([])
-    const handleChange = (selected) => {
-        setOptionSelected(selected);
+    const handleSkillsChange = (selected) => {
+        setSkillsSelected(selected);
+    };
+    const handleSettingsChange = (selected) => {
+        setSettings(selected);
     };
    
 
-    const Option = (props) => {
+    const SettingsOption = (props) => {
+        return (
+            <div>
+                <components.Option {...props}>
+                    <input
+                        type="checkbox"
+                        checked={props.isSelected}
+                        onChange={() => null}
+                    />{" "}
+                    <label>{props.label}</label>
+                </components.Option>
+            </div>
+        );
+    };
+    const SkillsOption = (props) => {
         return (
             <div>
                 <components.Option {...props}>
@@ -55,33 +78,56 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1.0, ease: "easeOut" }}
-                    className="bg-gray-900"
-                    style = {{maxWidth: "25vw", minWidth: "25vw", display: "block"}}
+                    className="bg-gray-900 min-w-[25vw] max-w-[25vw] block"
                 >
                     <div className="ml-4" style={{ position: "fixed" }}>
-                        <div className="bg-gray-800 rounded-lg p-4 mr-5" style = {{maxWidth: "25vw", minWidth: "25vw"}}>
-                            <h1>Filter by different skills</h1>
+                        <div className="bg-gray-800 rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
+                            <h1 className = "text-white">Filter by Setting</h1>
                             <br/>
                             <span
                                 className="d-inline-block grow"
                                 data-toggle="popover"
                                 data-trigger="focus"
-                                data-content="Select skills"
+                                data-content="Select setting"
                             >
                                 <Select // Updated component name
-                                    options={options}
+                                    options={settingOptions}
                                     isMulti
                                     closeMenuOnSelect={false}
                                     hideSelectedOptions={true}
                                     components={{
-                                        Option
+                                        SettingsOption
                                     }}
-                                    onChange={handleChange}
+                                    onChange={handleSettingsChange}
                                     allowSelectAll={true}
-                                    value={optionSelected}
+                                    value={settings}
                                     className = "w-100"
                                 />
                             </span>
+                            <br/>
+                            <h1 className = "text-white">Filter by Skills</h1>
+
+                            <span
+                                className="d-inline-block grow"
+                                data-toggle="popover"
+                                data-trigger="focus"
+                                data-content="Select setting"
+                            >
+                                <Select // Updated component name
+                                    options={skillOptions}
+                                    isMulti
+                                    closeMenuOnSelect={false}
+                                    hideSelectedOptions={true}
+                                    components={{
+                                        SkillsOption
+                                    }}
+                                    onChange={handleSkillsChange}
+                                    allowSelectAll={true}
+                                    value={skillsSelected}
+                                    className = "w-100"
+                                />
+                            </span>
+                            <br/>
                             <button
                                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 ml-2 rounded-lg"
                             >
@@ -93,7 +139,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
 
 
                 </m.div >
-                <div className="bg-gray-900 ml-8" style = {{minWidth: "50vw", maxWidth: "50vw", display: "block"}}>
+                <div className="bg-gray-900 ml-8 min-w-[65vw] max-w-[65vw] block">
                     <m.div
                         initial={{ x: (prevRoute == "/work" || prevRoute == "/" ? "100%" : "-100%"), opacity: 0 }}
                         animate={{ x: "0%", opacity: 1 }}
@@ -116,11 +162,10 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                                 <br />
                             </div>
 
-                            <div className="spacer" />
-                            <div className="spacer" />
+  
 
                             <section className="py-12">
-                                <div className="container mx-auto max-w-4xl px-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
                                     {projectList.map((project, index) => (
                                         <div
                                             key={index}
@@ -135,7 +180,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                                             <p className="text-gray-400 text-sm">
                                                 {project.setting}
                                             </p>
-                                            <p className="text-gray-400 text-sm">
+                                            <p className="word-highlight text-gray-400 text-sm">
                                                 {project.description}
                                             </p>
                                         </div>
@@ -144,29 +189,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                             </section>
                         </main>
 
-                        <style jsx global>{`
-   
-
-              .spacer {
-                height: 20px;
-              }
-
-              /* Custom scrollbar styles */
-              ::-webkit-scrollbar {
-                width: 8px;
-              }
-
-              ::-webkit-scrollbar-thumb {
-                background-color: #4b5563;
-                border-radius: 4px;
-              }
-
-              ::-webkit-scrollbar-track {
-                background-color: #1f2937;
-                border-radius: 4px;
-              }
-
-            `}</style>
+                        
                     </m.div>
                 </div>
             </div >

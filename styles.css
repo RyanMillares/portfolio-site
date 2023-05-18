@@ -6,3 +6,37 @@
     color: rgb(134 239 172); 
     transition: 100ms;
   }
+
+  .word-highlight {
+    
+  }
+  
+  .word-highlight span {
+    transition: color 0.3s;
+  }
+  
+  .word-highlight span.highlight {
+    color: red;
+  }
+
+  .spacer {
+    height: 20px;
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #1f2937;
+    border-radius: 4px;
+  }
+
+
+  
