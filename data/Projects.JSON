@@ -1,0 +1,44 @@
+[
+    {
+        "id": 0,
+        "name": "Employee Management Portal",
+        "company": "Avanade",
+        "setting": "Professional",
+        "description": [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat.",
+           
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
+        ],
+        "skills": [ "", "", "", "", ""
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Azure Cost Calculator",
+        "company": "Avanade",
+        "setting": "Professional",
+        "description": [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
+        ],
+        "skills": [ "", "", "", "", ""
+        ]
+    },
+    {
+        "id": 2,
+        "name": "MIPS Converter",
+        "company": "N/A",
+        "setting": "Personal",
+        "description": [
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat.",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
+        ],
+        "skills": [ "", "", "", "", ""
+        ]
+    }
+
+
+]

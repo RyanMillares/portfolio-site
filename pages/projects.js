@@ -3,43 +3,50 @@ import { motion as m } from "framer-motion"
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react'
 import useRouteUrlHistory from './useTargetPage';
-
+import Select, { components } from 'react-select'
+import projectData from '../data/Projects.JSON'
 
 
 export default function Projects({ pageProps, prevRoute, currentRoute }) {
     const router = useRouter();
     const { pathname } = router;
     const nextPageName = "/" + useRouteUrlHistory()
-    const workExperienceData = [
-        {
-            companyName: "Avanade",
-            jobTitle: "Software Engineer",
-            employmentDates: "2019-2021",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
-        },
-        {
-            companyName: "Brain Institute",
-            jobTitle: "Data Scientist",
-            employmentDates: "2021-Present",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
-        },
-        {
-            companyName: "Brain Institute",
-            jobTitle: "Data Scientist",
-            employmentDates: "2021-Present",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
-        }, {
-            companyName: "Brain Institute",
-            jobTitle: "Data Scientist",
-            employmentDates: "2021-Present",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
-        },
-        // Add more work experience entries here
-    ];
+    const options = [
+        { value: 'java', label: 'Java' },
+        { value: 'c++', label: 'C++' },
+        { value: 'python', label: 'Python' },
+        { value: 'javascript', label: 'JavaScript' },
+
+        { value: 'c#', label: 'C#' }
+    ]
+    const [optionSelected, setOptionSelected] = useState(null);
+    const [projectList, setProjectList] = useState([])
+    const handleChange = (selected) => {
+        setOptionSelected(selected);
+    };
+   
+
+    const Option = (props) => {
+        return (
+            <div>
+                <components.Option {...props}>
+                    <input
+                        type="checkbox"
+                        checked={props.isSelected}
+                        onChange={() => null}
+                    />{" "}
+                    <label>{props.label}</label>
+                </components.Option>
+            </div>
+        );
+    };
+
 
     useEffect(() => {
-
-    })
+        //console.log(optionSelected)
+        setProjectList(projectData) // change to filter function later
+        //console.log(projectList)
+    }, [projectData])
     return (
         <>
             <div className="bg-gray-900 flex min-h-screen py-2">
@@ -48,18 +55,33 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1.0, ease: "easeOut" }}
-                    className="w-1/4 bg-gray-900"
+                    className="bg-gray-900"
+                    style = {{maxWidth: "25vw", minWidth: "25vw", display: "block"}}
                 >
-                    <div className="ml-4 flex justify-center items-center" style={{ position: "fixed" }}>
-                        <div className="bg-gray-800 rounded-lg p-4">
-                            <select
-                                className="bg-gray-900 text-white px-4 py-2 rounded-lg focus:outline-none"
+                    <div className="ml-4" style={{ position: "fixed" }}>
+                        <div className="bg-gray-800 rounded-lg p-4 mr-5" style = {{maxWidth: "25vw", minWidth: "25vw"}}>
+                            <h1>Filter by different skills</h1>
+                            <br/>
+                            <span
+                                className="d-inline-block grow"
+                                data-toggle="popover"
+                                data-trigger="focus"
+                                data-content="Select skills"
                             >
-                                <option value="">Select Category</option>
-                                <option value="category1">Category 1</option>
-                                <option value="category2">Category 2</option>
-                                <option value="category3">Category 3</option>
-                            </select>
+                                <Select // Updated component name
+                                    options={options}
+                                    isMulti
+                                    closeMenuOnSelect={false}
+                                    hideSelectedOptions={true}
+                                    components={{
+                                        Option
+                                    }}
+                                    onChange={handleChange}
+                                    allowSelectAll={true}
+                                    value={optionSelected}
+                                    className = "w-100"
+                                />
+                            </span>
                             <button
                                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 ml-2 rounded-lg"
                             >
@@ -70,8 +92,8 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                     </div>
 
 
-                </m.div>
-                <div className="w-3/4 bg-gray-900">
+                </m.div >
+                <div className="bg-gray-900 ml-8" style = {{minWidth: "50vw", maxWidth: "50vw", display: "block"}}>
                     <m.div
                         initial={{ x: (prevRoute == "/work" || prevRoute == "/" ? "100%" : "-100%"), opacity: 0 }}
                         animate={{ x: "0%", opacity: 1 }}
@@ -84,13 +106,11 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                             <link rel="icon" href="/favicon.ico" />
                         </Head>
 
-                        <main className="container mx-auto max-w-prose px-4 pt-12">
+                        <main className="container mx-auto px-4 pt-12">
 
 
                             <div className="text-white">
                                 <h1>
-                                    <span className="font-black text-5xl"></span>
-                                    <br />
                                     <span className="text-3xl text-green-300">All Projects</span>
                                 </h1>
                                 <br />
@@ -101,22 +121,22 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
 
                             <section className="py-12">
                                 <div className="container mx-auto max-w-4xl px-4">
-                                    {workExperienceData.map((experience, index) => (
+                                    {projectList.map((project, index) => (
                                         <div
                                             key={index}
                                             className={`mb-8 workbox px-2 py-2 rounded transition ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-gray-800 duration-100`}
                                         >
                                             <h2 className="text-2xl font-bold text-white mb-2">
-                                                {experience.companyName}
+                                                {project.name}
                                             </h2>
                                             <p className="text-gray-400 text-sm">
-                                                {experience.jobTitle}
+                                                {project.company}
                                             </p>
                                             <p className="text-gray-400 text-sm">
-                                                {experience.employmentDates}
+                                                {project.setting}
                                             </p>
                                             <p className="text-gray-400 text-sm">
-                                                {experience.description}
+                                                {project.description}
                                             </p>
                                         </div>
                                     ))}
@@ -149,7 +169,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
             `}</style>
                     </m.div>
                 </div>
-            </div>
+            </div >
         </>
     );
 }
