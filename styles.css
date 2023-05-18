@@ -1,3 +1,8 @@
 .navbarItems {
     cursor: 'pointer';
 }
+
+.workbox:hover h2 {
+    color: rgb(134 239 172); 
+    transition: 100ms;
+  }
