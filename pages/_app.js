@@ -30,7 +30,7 @@ function MyApp({ Component, pageProps, router }) {
     <>
       <Navbar />
       <AnimatePresence initial={false} mode={'wait'}>
-        <Component prevRoute={prevRoute} currentRoute={currentRoute} key={router.pathname} {...pageProps} />
+        <Component className = "bg-gray-900" prevRoute={prevRoute} currentRoute={currentRoute} key={router.pathname} {...pageProps} />
 
       </AnimatePresence>
 
