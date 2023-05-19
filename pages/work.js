@@ -73,13 +73,13 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
 
                     </div>
                 </m.div>
-                <div className="bg-gray-900">
+                <div className="bg-gray-900 flex flex-col items-center min-h-screen py-2">
                     <m.div
                         initial={{ x: (prevRoute == "/" ? "100%" : "-100%"), opacity: 0 }}
                         animate={{ x: "0%", opacity: 1 }}
                         exit={{ x: (pathname == "/" ? "100%" : "-100%"), opacity: 0 }}
                         transition={{ duration: 1.0, ease: "easeOut" }}
-                        className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800"
+                        className="h-full overflow-y-auto bg-gray-900"
                     >
                         <Head>
                             <title>Work Experience</title>
