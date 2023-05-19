@@ -4,72 +4,60 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react'
 import useRouteUrlHistory from './useTargetPage';
 import Select, { components } from 'react-select'
+import makeAnimated from 'react-select/animated';
 import projectData from '../data/Projects.JSON'
 
 
 export default function Projects({ pageProps, prevRoute, currentRoute }) {
     const router = useRouter();
     const { pathname } = router;
-    const nextPageName = "/" + useRouteUrlHistory()
-    const skillOptions = [
-        { value: 'java', label: 'Java' },
-        { value: 'c++', label: 'C++' },
-        { value: 'python', label: 'Python' },
-        { value: 'javascript', label: 'JavaScript' },
 
-        { value: 'c#', label: 'C#' }
+    const skillOptions = [
+        { value: 'Java', label: 'Java' },
+        { value: 'C++', label: 'C++' },
+        { value: 'Python', label: 'Python' },
+        { value: 'Javascript', label: 'JavaScript' },
+
+        { value: 'C#', label: 'C#' }
     ]
     const settingOptions = [
-        { value: 'professional', label: 'Professional'},
-        { value: 'academic', label: 'Academic'},
-        { value: 'personal', label: 'Personal'}
+        { value: 'Professional', label: 'Professional'},
+        { value: 'Academic', label: 'Academic'},
+        { value: 'Personal', label: 'Personal'}
     ]
-    const [skillsSelected, setSkillsSelected] = useState(null);
+    const [skillsSelected, setSkillsSelected] = useState([]);
     const [settings, setSettings] = useState([])
     const [projectList, setProjectList] = useState([])
     const handleSkillsChange = (selected) => {
         setSkillsSelected(selected);
     };
     const handleSettingsChange = (selected) => {
-        setSettings(selected);
+        setSettings([selected]);
     };
    
+    const animatedComponents = makeAnimated();
+    
+    function filterProjects(unfilteredProj) {
+        let projs = unfilteredProj
+        console.log(projs)
+        console.log(settings)
+        if (skillsSelected.length > 0) {
+            projs = projs.filter(proj => proj.skills.some(skill => skillsSelected.map(skill => skill.value).includes(skill)));
+        }
 
-    const SettingsOption = (props) => {
-        return (
-            <div>
-                <components.Option {...props}>
-                    <input
-                        type="checkbox"
-                        checked={props.isSelected}
-                        onChange={() => null}
-                    />{" "}
-                    <label>{props.label}</label>
-                </components.Option>
-            </div>
-        );
-    };
-    const SkillsOption = (props) => {
-        return (
-            <div>
-                <components.Option {...props}>
-                    <input
-                        type="checkbox"
-                        checked={props.isSelected}
-                        onChange={() => null}
-                    />{" "}
-                    <label>{props.label}</label>
-                </components.Option>
-            </div>
-        );
-    };
+        if (settings.length > 0) {
+            projs = projs.filter(proj => settings.map(setting => setting.value).includes(proj.setting));
+
+        }
+        return projs
+    }
 
 
     useEffect(() => {
         //console.log(optionSelected)
-        setProjectList(projectData) // change to filter function later
+        setProjectList(filterProjects(projectData)) // change to filter function later
         //console.log(projectList)
-    }, [projectData])
+    }, [skillsSelected, settings])
     return (
         <>
             <div className="bg-gray-900 flex min-h-screen py-2">
@@ -90,14 +78,11 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                                 data-trigger="focus"
                                 data-content="Select setting"
                             >
-                                <Select // Updated component name
+                                <Select 
                                     options={settingOptions}
-                                    isMulti
-                                    closeMenuOnSelect={false}
-                                    hideSelectedOptions={true}
-                                    components={{
-                                        SettingsOption
-                                    }}
+                                    closeMenuOnSelect={true}
+                                    hideSelectedOptions={false}
+                                    components={animatedComponents}
                                     onChange={handleSettingsChange}
                                     allowSelectAll={true}
                                     value={settings}
@@ -118,9 +103,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                                     isMulti
                                     closeMenuOnSelect={false}
                                     hideSelectedOptions={true}
-                                    components={{
-                                        SkillsOption
-                                    }}
+                                    components={animatedComponents}
                                     onChange={handleSkillsChange}
                                     allowSelectAll={true}
                                     value={skillsSelected}
