@@ -141,7 +141,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
 
 
                 </m.div >
-                <div className="bg-gray-900 ml-8 min-w-[65vw] max-w-[65vw] block">
+                <div className="bg-gray-900 ml-8 min-w-[65vw] max-w-[100vw] block">
                     <m.div
                         initial={{ x: (prevRoute == "/work" || prevRoute == "/" ? "100%" : "-100%"), opacity: 0 }}
                         animate={{ x: "0%", opacity: 1 }}
