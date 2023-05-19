@@ -12,6 +12,22 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
     const router = useRouter();
     const { pathname } = router;
 
+    const customStyles = {
+        control: (provided) => ({
+          ...provided,
+          backgroundColor: '#1a202c', 
+          borderColor: '#1a202c', 
+        }),
+        option: (provided, state) => ({
+          ...provided,
+          backgroundColor: state.isFocused ? 'rgb(52 211 153)' : '#1a202c', 
+          color: '#f7fafc', 
+        }),
+        singleValue: (provided) => ({
+          ...provided,
+          color: '#f7fafc', 
+        }),
+      };
     const skillOptions = [
         { value: 'Java', label: 'Java' },
         { value: 'C++', label: 'C++' },
@@ -23,7 +39,8 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
     const settingOptions = [
         { value: 'Professional', label: 'Professional'},
         { value: 'Academic', label: 'Academic'},
-        { value: 'Personal', label: 'Personal'}
+        { value: 'Personal', label: 'Personal'},
+        { value: '', label: 'All Settings'}
     ]
     const [skillsSelected, setSkillsSelected] = useState([]);
     const [settings, setSettings] = useState([])
@@ -45,7 +62,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
             projs = projs.filter(proj => proj.skills.some(skill => skillsSelected.map(skill => skill.value).includes(skill)));
         }
 
-        if (settings.length > 0) {
+        if (settings.length > 0 && settings[0].value) {
             projs = projs.filter(proj => settings.map(setting => setting.value).includes(proj.setting));
 
         }
@@ -85,13 +102,14 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                                     components={animatedComponents}
                                     onChange={handleSettingsChange}
                                     allowSelectAll={true}
+                                    styles = {customStyles}
                                     value={settings}
                                     className = "w-100"
                                 />
                             </span>
                             <br/>
                             <h1 className = "text-white">Filter by Skills</h1>
-
+                            <br/>
                             <span
                                 className="d-inline-block grow"
                                 data-toggle="popover"
@@ -106,6 +124,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                                     components={animatedComponents}
                                     onChange={handleSkillsChange}
                                     allowSelectAll={true}
+                                    styles={customStyles}
                                     value={skillsSelected}
                                     className = "w-100"
                                 />
