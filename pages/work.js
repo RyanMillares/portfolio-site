@@ -54,7 +54,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1.0, ease: "easeOut" }}
-                    className="hidden sm:block w-1/4 bg-gray-900"
+                    className="hidden sm:block sm:w-1/4 bg-gray-900"
                 >
 
                     <div className="ml-4 flex justify-center items-center" style={{ position: "fixed" }}>
@@ -73,7 +73,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
 
                     </div>
                 </m.div>
-                <div className="w-full sm:w-3/4 bg-gray-900">
+                <div className="bg-gray-900">
                     <m.div
                         initial={{ x: (prevRoute == "/" ? "100%" : "-100%"), opacity: 0 }}
                         animate={{ x: "0%", opacity: 1 }}
