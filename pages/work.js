@@ -53,7 +53,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1.0, ease: "easeOut" }}
+                    transition={{ duration: 0.75, ease: "easeOut" }}
                     className="hidden sm:block sm:w-1/4 bg-gray-900"
                 >
 
@@ -75,11 +75,11 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
                 </m.div>
                 <div className="bg-gray-900 flex flex-col items-center min-h-screen py-2">
                     <m.div
-                        initial={{ x: (prevRoute == "/" ? "100%" : "-100%"), opacity: 0 }}
+                        initial={{ x: (prevRoute == "/" ? "25%" : "-25%"), opacity: 0 }}
                         animate={{ x: "0%", opacity: 1 }}
-                        exit={{ x: (pathname == "/" ? "100%" : "-100%"), opacity: 0 }}
-                        transition={{ duration: 1.0, ease: "easeOut" }}
-                        className="h-full overflow-y-auto bg-gray-900"
+                        exit={{ x: (pathname == "/" ? "25%" : "-25%"), opacity: 0 }}
+                        transition={{ duration: 0.75, ease: "easeOut" }}
+                        className="h-full overflow-y-auto"
                     >
                         <Head>
                             <title>Work Experience</title>
@@ -104,9 +104,13 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
                             <section className="py-12">
                                 <div className="container mx-auto max-w-4xl px-4">
                                     {workExperienceData.map((experience, index) => (
-                                        <div
-                                            key={index}
-                                            className={`mb-8 workbox px-2 py-2 rounded transition ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-gray-800 duration-100`}
+                                        <div key = {index} className = "mb-8 workbox px-2 py-2 rounded transition ease-in-out hover:-translate-y-1 hover:scale-105 hover:bg-gray-800 duration-100">
+                                        <m.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{opacity: 1 }}
+                                        exit={{opacity: 0 }}
+                                        transition={{ duration: 1.0, ease: "easeOut", delay: (pathname == "/work" ? 0.75 + 0.1 * index : 0) }}
+                                           
                                         >
                                             <h2 className="text-2xl font-bold text-white mb-2">
                                                 {experience.companyName}
@@ -120,6 +124,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
                                             <p className="text-gray-400 text-sm">
                                                 {experience.description}
                                             </p>
+                                        </m.div>
                                         </div>
                                     ))}
                                 </div>

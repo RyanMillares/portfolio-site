@@ -83,7 +83,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 1.0, ease: "easeOut" }}
-                    className="bg-gray-900 min-w-[25vw] max-w-[25vw] block"
+                    className="min-w-[25vw] max-w-[25vw] block"
                 >
                     <div className="ml-4" style={{ position: "fixed" }}>
                         <div className="bg-gray-800 rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
