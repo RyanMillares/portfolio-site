@@ -73,6 +73,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
     useEffect(() => {
         //console.log(optionSelected)
         setProjectList(filterProjects(projectData)) // change to filter function later
+        console.log(projectData)
         //console.log(projectList)
     }, [skillsSelected, settings])
     return (
@@ -182,9 +183,14 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                                             <p className="text-gray-400 text-sm">
                                                 {project.setting}
                                             </p>
-                                            <p className="word-highlight text-gray-400 text-sm">
-                                                {project.description}
-                                            </p>
+                                            <ul className="word-highlight text-gray-400 text-sm">
+                                                {
+                                                project.description.map((point, itemIndex) => (
+                                                    <li key = {itemIndex}>{point}</li>
+                                                ))
+                                                }
+                                                </ul>
+                                           
                                         </div>
                                     ))}
                                 </div>
@@ -195,6 +201,31 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                     </m.div>
                 </div>
             </div >
+            <style jsx global>{`
+   
+            html, body {
+                overflow-x: hidden;
+            }
+              .spacer {
+                height: 20px;
+              }
+
+              /* Custom scrollbar styles */
+              ::-webkit-scrollbar {
+                width: 8px;
+              }
+
+              ::-webkit-scrollbar-thumb {
+                background-color: #4b5563;
+                border-radius: 4px;
+              }
+
+              ::-webkit-scrollbar-track {
+                background-color: #1f2937;
+                border-radius: 4px;
+              }
+
+            `}</style>
         </>
     );
 }

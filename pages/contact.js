@@ -11,7 +11,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
       }
     useEffect(() => {
 
-    }, [])
+    }, [cards])
     
     return (
         <>
