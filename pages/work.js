@@ -19,7 +19,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
         },
         {
-            companyName: "Brain Institute",
+            companyName: "Brain Institutes",
             jobTitle: "Data Scientist",
             employmentDates: "2021-Present",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
