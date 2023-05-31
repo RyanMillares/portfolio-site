@@ -15,6 +15,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
     
     return (
         <>
+        <div className="bg-gray-900 flex min-h-screen py-2">
             <table>
                 <tbody>
                     <tr>
@@ -28,6 +29,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
                     </tr>
                 </tbody>
             </table>
+            </div>
         </>
     )
 }
