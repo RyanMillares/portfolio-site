@@ -14,19 +14,19 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
     const workExperienceData = [
         {
             companyName: "Avanade",
-            jobTitle: "Software Engineer",
+            jobTitle: "Ful Stack Developer",
             employmentDates: "2019-2021",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
         },
         {
-            companyName: "Brain Institutes",
-            jobTitle: "Data Scientist",
+            companyName: "The Brain Institute",
+            jobTitle: "Software Engineer",
             employmentDates: "2021-Present",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
         },
         {
-            companyName: "Brain Institute",
-            jobTitle: "Data Scientist",
+            companyName: "CSC Corptax",
+            jobTitle: ".NET Developer",
             employmentDates: "2021-Present",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
         }, {
