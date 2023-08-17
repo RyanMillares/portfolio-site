@@ -102,84 +102,84 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
             <div className="bg-gray-900 flex min-h-screen py-2">
                 {
                     isMobile ? (
-                        <>
-                            <button
-                                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 ml-2 rounded-lg"
-                            >
-                                Search
-                            </button>
-                            <m.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                                transition={{ duration: 1.0, ease: "easeOut" }}
 
-                                className="min-w-[25vw] max-w-[25vw]"
-                            >
-                                <div className="ml-4" style={{ position: "fixed" }}>
-                                    <div className="bg-gray-800 rounded-tr-lg rounded-br-lg sm:rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
-                                        <h1 className="text-white">Filter by Setting</h1>
-                                        <br />
-                                        <span
-                                            className="d-inline-block grow"
-                                            data-toggle="popover"
-                                            data-trigger="focus"
-                                            data-content="Select setting"
-                                        >
-                                            <Select
-                                                options={settingOptions}
-                                                closeMenuOnSelect={true}
-                                                hideSelectedOptions={false}
-                                                components={animatedComponents}
-                                                onChange={handleSettingsChange}
-                                                allowSelectAll={true}
-                                                styles={customStyles}
-                                                value={settings}
-                                                className="w-100"
-                                            />
-                                        </span>
-                                        <br />
-                                        <h1 className="text-white">Filter by Skills</h1>
-                                        <br />
-                                        <span
-                                            className="d-inline-block grow"
-                                            data-toggle="popover"
-                                            data-trigger="focus"
-                                            data-content="Select setting"
-                                        >
-                                            <Select // Updated component name
-                                                options={skillOptions}
-                                                isMulti
-                                                closeMenuOnSelect={false}
-                                                hideSelectedOptions={true}
-                                                components={animatedComponents}
-                                                onChange={handleSkillsChange}
-                                                allowSelectAll={true}
-                                                styles={customStyles}
-                                                value={skillsSelected}
-                                                className="w-100"
-                                            />
-                                        </span>
-                                        <br />
-                                        <button
-                                            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 ml-2 rounded-lg"
-                                        >
-                                            Search
-                                        </button>
-                                    </div>
 
+                        <m.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 1.0, ease: "easeOut" }}
+
+                            className="fixed top-0 left-0 min-w-[25vw] max-w-[25vw] z-10"
+                        >
+                            
+                                <button
+                                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 ml-2 rounded-lg"
+                                >
+                                    +
+                                </button>
+                                <div className="bg-gray-800 rounded-tr-lg rounded-br-lg sm:rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
+                                    <h1 className="text-white">Filter by Setting</h1>
+                                    <br />
+                                    <span
+                                        className="d-inline-block grow"
+                                        data-toggle="popover"
+                                        data-trigger="focus"
+                                        data-content="Select setting"
+                                    >
+                                        <Select
+                                            options={settingOptions}
+                                            closeMenuOnSelect={true}
+                                            hideSelectedOptions={false}
+                                            components={animatedComponents}
+                                            onChange={handleSettingsChange}
+                                            allowSelectAll={true}
+                                            styles={customStyles}
+                                            value={settings}
+                                            className="w-100"
+                                        />
+                                    </span>
+                                    <br />
+                                    <h1 className="text-white">Filter by Skills</h1>
+                                    <br />
+                                    <span
+                                        className="d-inline-block grow"
+                                        data-toggle="popover"
+                                        data-trigger="focus"
+                                        data-content="Select setting"
+                                    >
+                                        <Select // Updated component name
+                                            options={skillOptions}
+                                            isMulti
+                                            closeMenuOnSelect={false}
+                                            hideSelectedOptions={true}
+                                            components={animatedComponents}
+                                            onChange={handleSkillsChange}
+                                            allowSelectAll={true}
+                                            styles={customStyles}
+                                            value={skillsSelected}
+                                            className="w-100"
+                                        />
+                                    </span>
+                                    <br />
+                                    <button
+                                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 ml-2 rounded-lg"
+                                    >
+                                        Search
+                                    </button>
                                 </div>
 
 
-                            </m.div >
-                        </>
+
+                        </m.div >
+
                     ) : (
                         <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 1.0, ease: "easeOut" }}
-                           
+
 
                             className="min-w-[25vw] max-w-[25vw]"
                         >
@@ -242,7 +242,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                     )
                 }
 
-                <div className="bg-gray-900 ml-8 min-w-[65vw] max-w-[100vw] block">
+                <div className="bg-gray-900 ml-8 min-w-[100vw] sm:min-w-[65vw] max-w-[100vw] block">
                     <m.div
                         initial={{ x: (prevRoute == "/work" || prevRoute == "/" ? "100%" : "-100%"), opacity: 0 }}
                         animate={{ x: "0%", opacity: 1 }}
