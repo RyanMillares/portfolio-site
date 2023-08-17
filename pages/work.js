@@ -134,7 +134,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
 
                         <style jsx global>{`
    
-            body {
+            html {
                 overflow-x: hidden;
             }
               .spacer {
