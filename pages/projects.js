@@ -183,8 +183,8 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
 
                             className="min-w-[25vw] max-w-[25vw]"
                         >
-                            <div className="ml-4" style={{ position: "fixed" }}>
-                                <div className="bg-gray-800 rounded-tr-lg rounded-br-lg sm:rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
+                            <div className="ml-4 fixed">
+                                <div className="mt-10 bg-gray-800 rounded-tr-lg rounded-br-lg sm:rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
                                     <h1 className="text-white">Filter by Setting</h1>
                                     <br />
                                     <span

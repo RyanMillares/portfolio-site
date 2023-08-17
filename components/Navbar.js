@@ -15,7 +15,7 @@ export default function Navbar() {
     }, [router.asPath]);
 
     return (
-        <nav className="bg-gray-900 text-white py-3 sticky top-0 z-50">
+        <nav className="bg-gray-900 text-white py-3 fixed top-0 left-1/2 transform -translate-x-1/2 z-50 w-full">
             <ul className="container mx-auto flex justify-center gap-10">
                 <Link href="/">
                     <li className="cursor-pointer">Home</li>
