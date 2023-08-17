@@ -14,7 +14,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
     const workExperienceData = [
         {
             companyName: "Avanade",
-            jobTitle: "Ful Stack Developer",
+            jobTitle: "Full Stack Developer",
             employmentDates: "2019-2021",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat lorem et mauris faucibus placerat."
         },
@@ -129,6 +129,7 @@ export default function Work({ pageProps, prevRoute, currentRoute }) {
                                     ))}
                                 </div>
                             </section>
+                            
                         </main>
 
                         <style jsx global>{`
