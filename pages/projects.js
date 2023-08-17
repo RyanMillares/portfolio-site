@@ -303,7 +303,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
             </div >
             <style jsx global>{`
    
-            html {
+            html, body {
                 overflow-x: hidden;
             }
               .spacer {
