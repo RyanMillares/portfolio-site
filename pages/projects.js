@@ -110,15 +110,28 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 1.0, ease: "easeOut" }}
 
-                            className="fixed top-0 left-0 min-w-[25vw] max-w-[25vw] z-10"
+                            className="fixed top-10 left-0 min-w-[25vw] max-w-[25vw] z-10"
                         >
-                            
+                            <div className="mt-16">
+
                                 <button
-                                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 ml-2 rounded-lg"
+                                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg"
                                 >
                                     +
                                 </button>
-                                <div className="bg-gray-800 rounded-tr-lg rounded-br-lg sm:rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
+
+                                <m.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.75, ease: "easeOut" }}
+                    className="hidden sm:block sm:w-1/4 bg-gray-900"
+                >
+
+                </m.div>
+                                <div className="bg-gray-800 rounded-tr-lg rounded-br-lg sm:rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5"
+                                style = {{display: "inherit"}}
+                                >
                                     <h1 className="text-white">Filter by Setting</h1>
                                     <br />
                                     <span
@@ -169,7 +182,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                                     </button>
                                 </div>
 
-
+                            </div>
 
                         </m.div >
 
@@ -184,7 +197,7 @@ export default function Projects({ pageProps, prevRoute, currentRoute }) {
                             className="min-w-[25vw] max-w-[25vw]"
                         >
                             <div className="ml-4 fixed">
-                                <div className="mt-10 bg-gray-800 rounded-tr-lg rounded-br-lg sm:rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
+                                <div className="bg-gray-800 rounded-tr-lg rounded-br-lg sm:rounded-lg min-w-[25vw] max-w-[25vw] p-4 mr-5">
                                     <h1 className="text-white">Filter by Setting</h1>
                                     <br />
                                     <span
